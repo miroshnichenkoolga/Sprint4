@@ -1,7 +1,6 @@
 import allure
 from selenium.common import TimeoutException
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from pages.base_page import BasePage
 from faker import Faker
 from selenium.webdriver.common.by import By
@@ -17,14 +16,10 @@ class MainPage(BasePage):
     questions = [By.CLASS_NAME, 'accordion__heading']
     visible_answer = [By.XPATH, './/div[contains(@class, "accordion__panel") and not(@hidden)]']
 
-
-    # def __init__(self, driver):
-    #     self.driver = driver
-
     @allure.step('Прокрутить страницу до раздела "Вопросы о важном"')
     def scroll_to_questions_section(self):
         questions_section = self.find_element(self.questions_section_head)
-        self.driver.execute_script('arguments[0].scrollIntoView();', questions_section)
+        self.execute_script_scroll(questions_section)
 
     @allure.step('Нажать на вопрос номер {number}')
     def click_question(self, number):
@@ -50,25 +45,7 @@ class MainPage(BasePage):
     @allure.step('Клик на лого "Яндекс"')
     def check_click_on_logo_yandex(self):
         self.find_element(self.logo_yandex).click()
-        self.driver.switch_to.window(self.driver.window_handles[1])
+        self.switch_to_window()
         current_link = self.get_url_with_waiting(5)
         assert current_link == 'https://dzen.ru/?yredirect=true'
-
-    @allure.step('Ожидание получения текущего url"')
-    def get_url_with_waiting(self, timeout=3):
-            WebDriverWait(self.driver, timeout).until(
-                # any_of необходима из-за того, что yandex периодически выдает капчу + ожидание необходимо
-                EC.any_of(EC.url_to_be('https://dzen.ru/?yredirect=true'), EC.url_contains('yandex.ru')))
-
-            return self.driver.current_url
-
-
-
-
-
-
-
-
-
-
 

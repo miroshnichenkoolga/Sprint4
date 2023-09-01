@@ -8,9 +8,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
 
+@allure.title('Проверка создания заказа')
 class TestOrderPage:
-
-    driver = None
 
     @allure.title('Проверка клика по кнопке "Заказать" в верху страницы')
     @allure.description('На странице ищем кнопку "Заказать", производим клик и проверяем, что current_url == '
@@ -30,6 +29,3 @@ class TestOrderPage:
         order_page.select_create_new_order_who_is_the_scot_for()
         order_page.select_create_new_order_about_rent()
         order_page.check_pop_up_window_when_create_new_order()
-
-
-

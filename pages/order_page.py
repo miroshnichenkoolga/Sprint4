@@ -5,12 +5,10 @@ from selenium.common import TimeoutException
 from selenium.webdriver import Keys
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
-from pytest import *
 from selenium.webdriver.common.by import By
 from faker import Faker
 from selenium.webdriver.common.by import By
 import datetime
-
 from pages.base_page import BasePage
 
 
@@ -96,11 +94,4 @@ class OrderPage(BasePage):
     def check_pop_up_window_when_create_new_order(self):
         assert "Заказ оформлен" in self.find_element(self.window_create_order).text
 
-    # def check_message_when_invalid_field_name(self, name):
-    #     # self.find_element(self.button_order_near_order_status).click()
-    #     self.find_element(self.field_name).send_keys(name)
-    #
-    #     self.wait_element_to_be_clickable(self.button_further).click()
-    #
-    #     assert self.find_element(self.massage_enter_valid_name).text == 'Введите корректное имя'
 
