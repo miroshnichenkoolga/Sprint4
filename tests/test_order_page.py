@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-@allure.title('Проверка создания заказа')
+@allure.feature('Проверка создания заказа')
 class TestOrderPage:
 
     @allure.title('Проверка клика по кнопке "Заказать" в верху страницы')

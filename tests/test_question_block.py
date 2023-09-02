@@ -6,7 +6,7 @@ from pages.main_page import MainPage
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-@allure.title('Проверка раздела «Вопросы о важном» ')
+@allure.feature('Проверка раздела «Вопросы о важном» ')
 class TestMainQuestionBlock:
     test_data = [
         [1, "Сутки — 400 рублей. Оплата курьеру — наличными или картой."],

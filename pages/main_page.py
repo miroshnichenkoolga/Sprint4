@@ -46,6 +46,9 @@ class MainPage(BasePage):
     def check_click_on_logo_yandex(self):
         self.find_element(self.logo_yandex).click()
         self.switch_to_window()
-        current_link = self.get_url_with_waiting(5)
+        link = 'https://dzen.ru/?yredirect=true'
+        url_yandex = 'yandex.ru'
+        timeout = 5
+        current_link = self.get_url_waiting(timeout, link, url_yandex)
         assert current_link == 'https://dzen.ru/?yredirect=true'
 

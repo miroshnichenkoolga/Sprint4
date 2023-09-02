@@ -6,7 +6,7 @@ from pages.main_page import MainPage
 from selenium.webdriver.support.wait import WebDriverWait
 
 
-@allure.title('Проверка тестовых ссылок')
+@allure.feature('Проверка тестовых ссылок')
 class TestLinks:
 
     @allure.title('Проверка клика на логотип «Самоката»')
@@ -23,3 +23,4 @@ class TestLinks:
     def test_click_on_logo_yandex_open_new_wind(self, driver):
         main_page = MainPage(driver)
         main_page.check_click_on_logo_yandex()
+
